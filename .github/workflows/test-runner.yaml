@@ -14,7 +14,7 @@ jobs:
       - name: Checkout Frontend code
         uses: actions/checkout@v4.2.2
         with:
-          repository: APaud3l/jul24-t2w14-inventory-manager-frontend
+          repository: Donjella/jul24-t2w14-inventory-manager-frontend
       
       - name: Install dependencies
         run: npm install
@@ -39,7 +39,7 @@ jobs:
       - name: Checkout Backend code
         uses: actions/checkout@v4.2.2
         with:
-          repository: APaud3l/inventory-manager-backend
+          repository: Donjella/inventory-manager-backend/
       
       - name: Install dependencies
         run: npm install
