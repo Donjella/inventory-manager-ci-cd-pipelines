@@ -33,7 +33,7 @@ jobs:
             - 27017:27017
       
       env:
-        MONGO_URI: mongodb://localhost:27017/testdb
+        MONGO_URI: mongodb://mongo:27017/testdb
 
       steps:
       - name: Checkout Backend code
