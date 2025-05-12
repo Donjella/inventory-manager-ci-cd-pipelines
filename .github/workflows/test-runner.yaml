@@ -14,7 +14,7 @@ jobs:
       - name: Checkout Frontend code
         uses: actions/checkout@v4.2.2
         with:
-          repository: Donjella/jul24-t2w14-inventory-manager-frontend
+          repository: APaud3l/jul24-t2w14-inventory-manager-frontend
       
       - name: Install dependencies
         run: npm install
@@ -23,39 +23,26 @@ jobs:
         run: npm run test
   
   backend-tests:
-    name: Run Backend Tests
-    runs-on: ubuntu-latest
+      name: Run Backend Tests
+      runs-on: ubuntu-latest
 
-    services:
+      services:
         mongo:
           image: mongo:6
           ports:
             - 27017:27017
+      
+      env:
+        MONGO_URI: mongodb://localhost:27017/testdb
 
-    steps:
-        - name: Checkout Backend code
-          uses: actions/checkout@v4.2.2
-          with:
-            repository: Donjella/inventory-manager-backend
-
-        - name: Install dependencies
-          run: npm install
-
-        - name: Wait for MongoDB to be ready
-          run: |
-            for i in {1..10}; do
-            nc -z mongo 27017 && echo "✅ Mongo is up" && exit 0
-            echo "⏳ Waiting for MongoDB..."
-            sleep 2
-            done
-            echo "❌ MongoDB did not start in time" && exit 1
-
-        - name: Debug MONGO_URI
-          run: echo "MONGO_URI is $MONGO_URI"
-          env:
-            MONGO_URI: mongodb://mongo:27017/testdb
-
-        - name: Run tests
-          run: npm run test
-          env:
-            MONGO_URI: mongodb://mongo:27017/testdb
+      steps:
+      - name: Checkout Backend code
+        uses: actions/checkout@v4.2.2
+        with:
+          repository: APaud3l/inventory-manager-backend
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Run tests
+        run: npm run test
