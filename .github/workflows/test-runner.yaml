@@ -35,7 +35,7 @@ jobs:
                 --health-cmd="mongosh --eval 'db.adminCommand({ ping: 1 })'"
                 --health-interval 10s
                 --health-timeout 5s
-                --health-retires 5
+                --health-retries 5
         
       env:
         MONGO_URI: mongodb://localhost:27017/testdb
